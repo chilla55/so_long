@@ -6,7 +6,7 @@
 #    By: agrotzsc <agrotzsc@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/01 03:58:29 by agrotzsc          #+#    #+#              #
-#    Updated: 2022/03/03 16:22:03 by agrotzsc         ###   ########.fr        #
+#    Updated: 2022/03/05 15:33:23 by agrotzsc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME			=	so_long
 CC				=	gcc
-CFLAGS			=	-g -Wall -Wextra -Werror
+CFLAGS			=	-Wall -Wextra -Werror
 DEF_COLOR		=	\033[0;39m
 GREEN			=	\033[0;92m
 YELLOW			=	\033[0;93m
@@ -79,7 +79,7 @@ $(NAME): mlx_all $(OBJS)
 	@printf "%b" "\r$(GREEN)$(NAME) compiled.$(DEF_COLOR)\n"
 
 debug: mlx_all $(OBJS)
-	@$(CFLAGS) += -ggdb
+	@$(CFLAGS) += -g -ggdb
 	@printf "%b" "\r\033[2K"
 	@make -C ${LIBFT_DIR}
 	@printf "%b" "\r\033[2K"
