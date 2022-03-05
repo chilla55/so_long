@@ -6,7 +6,7 @@
 #    By: agrotzsc <agrotzsc@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/01 03:58:29 by agrotzsc          #+#    #+#              #
-#    Updated: 2022/03/02 17:18:01 by agrotzsc         ###   ########.fr        #
+#    Updated: 2022/03/03 16:22:03 by agrotzsc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 
 NAME			=	so_long
 CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-g -Wall -Wextra -Werror
 DEF_COLOR		=	\033[0;39m
 GREEN			=	\033[0;92m
 YELLOW			=	\033[0;93m
@@ -48,7 +48,7 @@ MOVE_FILES		=	player.c \
 #---- Prefix ------------------------------------------------------------------#
 
 UTILS			=	$(addprefix $(UTILS_DIR),$(UTILS_FILES))
-MAP			=	$(addprefix $(MAP_DIR),$(MAP_FILES))
+MAP				=	$(addprefix $(MAP_DIR),$(MAP_FILES))
 MOVE			=	$(addprefix $(MOVE_DIR),$(MOVE_FILES))
 
 COMP_FILES		=	$(SRC_FILES) \
@@ -79,11 +79,12 @@ $(NAME): mlx_all $(OBJS)
 	@printf "%b" "\r$(GREEN)$(NAME) compiled.$(DEF_COLOR)\n"
 
 debug: mlx_all $(OBJS)
+	@$(CFLAGS) += -ggdb
 	@printf "%b" "\r\033[2K"
 	@make -C ${LIBFT_DIR}
 	@printf "%b" "\r\033[2K"
 	@printf "%b" "\r$(YELLOW)Compiling: $(NAME)$(DEF_COLOR)"
-	@$(CC) -o so_long -g $(CFLAGS) $(OBJS) $(MLX) $(LIBFT) -L/usr/include/X11/extensions -lX11 -lXext
+	@$(CC) -o so_long $(CFLAGS) $(OBJS) $(MLX) $(LIBFT) -L/usr/include/X11/extensions -lX11 -lXext
 	@printf "%b" "\r\033[2K"
 	@printf "%b" "\r$(GREEN)$(NAME) compiled.$(DEF_COLOR)\n"
 

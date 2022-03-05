@@ -6,7 +6,7 @@
 /*   By: agrotzsc <agrotzsc@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 00:12:01 by agrotzsc          #+#    #+#             */
-/*   Updated: 2022/03/02 16:38:07 by agrotzsc         ###   ########.fr       */
+/*   Updated: 2022/03/04 10:55:44 by agrotzsc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	print_movement(t_game *game)
 
 	moves = ft_itoa(game->move_nbr);
 	put_map(game);
-	mlx_string_put(game->mlx, game->win, 30, 30, 123456, moves);
+	mlx_string_put(game->mlx, game->win, 10, 20, 123456, moves);
 	free(moves);
 }
 

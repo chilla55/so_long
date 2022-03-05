@@ -6,7 +6,7 @@
 /*   By: agrotzsc <agrotzsc@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 22:35:49 by agrotzsc          #+#    #+#             */
-/*   Updated: 2022/03/02 13:39:22 by agrotzsc         ###   ########.fr       */
+/*   Updated: 2022/03/02 19:47:30 by agrotzsc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	ran_enemy(t_game *game)
 		{
 			if (game->arr[i][j] == 'X')
 			{
-				if ((j * i) % 2 == 1)
+				if ((j + i) % 2 == 1)
 					game->arr[i][j] = 'x';
 			}
 			j++;

@@ -6,7 +6,7 @@
 /*   By: agrotzsc <agrotzsc@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 02:32:42 by agrotzsc          #+#    #+#             */
-/*   Updated: 2022/03/02 16:36:38 by agrotzsc         ###   ########.fr       */
+/*   Updated: 2022/03/04 10:56:21 by agrotzsc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 	mlx_key_hook(game->win, key_hook, game);
 	mlx_hook(game->win, 33, (1L << 17), game_abort, game);
 	mlx_hook(game->win, 23, (1L << 15), put_map, game);
+	print_movement(game);
 	mlx_loop(game->mlx);
 	exit_game(game);
 	return (1);
