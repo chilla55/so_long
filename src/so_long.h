@@ -6,7 +6,7 @@
 /*   By: agrotzsc <agrotzsc@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 02:58:47 by agrotzsc          #+#    #+#             */
-/*   Updated: 2022/03/02 16:35:59 by agrotzsc         ###   ########.fr       */
+/*   Updated: 2022/03/05 17:22:34 by agrotzsc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void		wall_check(char *res, t_game *game);
 void		value_check(char *res, int counter, t_game *game);
 void		character_check(char *res, t_game *game);
 void		rectangular_check(char *res, t_game *game);
-void		rowsncols(char *res, int mapsize, t_game *game);
+void		rowsncols(char *res, t_game *game);
 t_data		*init_tile(t_game *game, char *path);
 char		**init_map(t_game *game, char **argv);
 int			put_map(t_game *game);

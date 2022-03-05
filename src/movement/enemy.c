@@ -6,7 +6,7 @@
 /*   By: agrotzsc <agrotzsc@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 00:17:51 by agrotzsc          #+#    #+#             */
-/*   Updated: 2022/03/02 17:13:44 by agrotzsc         ###   ########.fr       */
+/*   Updated: 2022/03/05 16:39:33 by agrotzsc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,23 @@ void	draw_enemy2(t_game *game)
 	}
 }
 
+void	dest_img(t_game *game, t_data *data)
+{
+	if (data->img)
+	{
+		mlx_destroy_image(game->mlx, data->img);
+	}
+	if (data)
+		free(data);
+}
+
 void	draw_enemy(t_game *game)
 {
-	if (game->enemy->img)
-		mlx_destroy_image(game->mlx, game->enemy->img);
-	if (game->enemy)
-		free(game->enemy);
-	if (game->enemys->img)
-		mlx_destroy_image(game->mlx, game->enemys->img);
-	if (game->enemys)
-		free(game->enemys);
-	if (game->player->img)
-		mlx_destroy_image(game->mlx, game->player->img);
-	if (game->player)
-		free(game->player);
-	if (game->keys->img)
-		mlx_destroy_image(game->mlx, game->keys->img);
-	if (game->keys)
-		free(game->keys);
+	if (game->end == 1)
+		return ;
+	dest_img(game, game->enemy);
+	dest_img(game, game->enemys);
+	dest_img(game, game->player);
+	dest_img(game, game->keys);
 	draw_enemy2(game);
 }

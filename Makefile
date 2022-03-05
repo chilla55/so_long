@@ -6,15 +6,22 @@
 #    By: agrotzsc <agrotzsc@student.42wolfsburg.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/01 03:58:29 by agrotzsc          #+#    #+#              #
-#    Updated: 2022/03/05 15:33:23 by agrotzsc         ###   ########.fr        #
+#    Updated: 2022/03/05 16:54:58 by agrotzsc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #---- Config ------------------------------------------------------------------#
 
+DEBUG ?= 0
+ifeq ($(DEBUG), 1)
+    CFLAGS 		=	-g -ggdb -Wall -Wextra -Werror
+else
+	CFLAGS		=	-Wall -Wextra -Werror
+endif
+
+
 NAME			=	so_long
 CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror
 DEF_COLOR		=	\033[0;39m
 GREEN			=	\033[0;92m
 YELLOW			=	\033[0;93m
@@ -70,16 +77,6 @@ MLX_FILES		=	libmlx_Linux.a
 MLX				=	$(addprefix $(MLX_DIR),$(MLX_FILES))
 
 $(NAME): mlx_all $(OBJS)
-	@printf "%b" "\r\033[2K"
-	@make -C ${LIBFT_DIR}
-	@printf "%b" "\r\033[2K"
-	@printf "%b" "\r$(YELLOW)Compiling: $(NAME)$(DEF_COLOR)"
-	@$(CC) -o so_long $(CFLAGS) $(OBJS) $(MLX) $(LIBFT) -L/usr/include/X11/extensions -lX11 -lXext
-	@printf "%b" "\r\033[2K"
-	@printf "%b" "\r$(GREEN)$(NAME) compiled.$(DEF_COLOR)\n"
-
-debug: mlx_all $(OBJS)
-	@$(CFLAGS) += -g -ggdb
 	@printf "%b" "\r\033[2K"
 	@make -C ${LIBFT_DIR}
 	@printf "%b" "\r\033[2K"

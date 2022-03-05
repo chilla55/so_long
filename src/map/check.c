@@ -6,7 +6,7 @@
 /*   By: agrotzsc <agrotzsc@student.42wolfsburg.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 22:39:12 by agrotzsc          #+#    #+#             */
-/*   Updated: 2022/03/02 17:15:55 by agrotzsc         ###   ########.fr       */
+/*   Updated: 2022/03/05 17:22:49 by agrotzsc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ void	ft_load_map(char **argv, t_game *game)
 	char	*str;
 	char	*res;
 	char	initializor;
-	int		mapsize;
 
-	mapsize = 0;
 	initializor = 0;
 	str = &initializor;
 	res = (char *)ft_calloc(sizeof(char), 1);
@@ -38,27 +36,32 @@ void	ft_load_map(char **argv, t_game *game)
 		exit_game(game);
 	fd = open(argv[1], O_RDONLY);
 	if (read(fd, NULL, 0))
+	{
+		free(res);
 		ft_print("Map file doesn't exist!\n", game, 1, 1);
+	}
 	while (read(fd, str, 1))
 	{
-		res = ft_strjoin(res, str);
+		res = ft_strjoin_free_s1(res, str);
 		if (res == NULL)
 			exit_game(game);
 	}
-	mapsize = ft_strlen(res);
 	close(fd);
-	rowsncols(res, mapsize, game);
+	rowsncols(res, game);
 }
 
-void	rowsncols(char *res, int mapsize, t_game *game)
+void	rowsncols(char *res, t_game *game)
 {
 	int	i;
 	int	collen;
 	int	rowlen;
+	int	mapsize;
 
 	i = 0;
+	mapsize = 0;
 	collen = 0;
 	rowlen = 1;
+	mapsize = ft_strlen(res);
 	while (i <= mapsize)
 	{
 		if (res[i] == '\n')
